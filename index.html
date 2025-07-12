@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manifiesto del Corazón Procesado</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      padding: 2rem;
+      text-align: center;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      margin: auto;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      min-height: 180px;
+    }
+    .nav {
+      margin: 1rem 0;
+    }
+    button {
+      background: #4b5563;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background: #374151;
+    }
+    .contador {
+      color: #6b7280;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Manifiesto del Corazón Procesado</h1>
+  <p>Frases, historias y verdades para un camino de fe auténtica</p>
+
+  <div class="card" id="card">
+    <h2 id="titulo"></h2>
+    <p id="contenido"></p>
+  </div>
+
+  <div class="nav">
+    <button onclick="prev()">⟵ Anterior</button>
+    <button onclick="next()">Siguiente ⟶</button>
+  </div>
+
+  <div class="contador" id="contador"></div>
+
+  <script>
+    const sections = [
+      { title: "Presencia con propósito", content: "No te pido que nos salves del mundo, sino que nos libres del mal. — Juan 17:15 (paráfrasis)" },
+      { title: "Abrazar la luz, no temer la sombra", content: "La pureza no se trata de evitar la oscuridad, sino de abrazar la luz." },
+      { title: "Fe: el cimiento firme", content: "Fe: firmeza, seguridad, fidelidad." },
+      { title: "Convicción sobre emoción", content: "Más convicción, menos emoción." },
+      { title: "Distinguir entre precio y valor", content: "Existen cosas que tienen precio y otras que tienen valor." },
+      { title: "Madurar antes que figurar", content: "No se trata de figurar, se trata de madurar." },
+      { title: "Historia del bambú japonés", content: "Durante siete años no se ve nada... pero el bambú crece hacia abajo antes de crecer hacia arriba." },
+      { title: "Oposición como señal", content: "Si en tu caminar con Jesús no te has encontrado con el diablo, seguro vas en la misma dirección con él." },
+      { title: "Reputación vs. Carácter", content: "Reputación es lo que la gente cree que eres; carácter es lo que realmente eres." },
+      { title: "Los tiempos de Dios", content: "Dios deja reinar a los Saúles mientras procesa a los David." },
+      { title: "La recompensa tras la resistencia", content: "Dios recompensa a los que soportan tentaciones y procesos." },
+      { title: "La anatomía del pecado", content: "El pecado miente, esclaviza y es progresivo." },
+      { title: "Identidad en la caída", content: "Las ovejas pueden caer en el lodo, pero solo los perros se revuelcan en él." }
+    ];
+
+    let index = 0;
+
+    function render() {
+      document.getElementById("titulo").textContent = sections[index].title;
+      document.getElementById("contenido").textContent = sections[index].content;
+      document.getElementById("contador").textContent = `${index + 1} / ${sections.length}`;
+    }
+
+    function next() {
+      index = (index + 1) % sections.length;
+      render();
+    }
+
+    function prev() {
+      index = (index - 1 + sections.length) % sections.length;
+      render();
+    }
+
+    render();
+  </script>
+
+</body>
+</html>
